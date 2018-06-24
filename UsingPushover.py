@@ -1,5 +1,6 @@
 from pushover_open_client import Client
 from CommandToDomoticz import Domoticz
+import json
 
 domoticz = None
 inputConfigFile = "device.cfg"
