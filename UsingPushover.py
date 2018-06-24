@@ -1,4 +1,9 @@
 from pushover_open_client import Client
+from CommandToDomoticz import Domoticz
+
+domoticz = None
+inputConfigFile = "device.cfg"
+
 
 def messageCallback(messageList):
 	#Prcoess/do work with messageList!
@@ -7,7 +12,7 @@ def messageCallback(messageList):
 		
 			#Do work with message here!
             print("Received: " + message.message + "\n")
-
+			domoticz.ProcessMessage(message.message)
 
 			#Make sure to acknowledge messages with priority >= 2
 			if(message.priority >= 2):
@@ -18,7 +23,18 @@ def messageCallback(messageList):
 		client.deleteMessages(messageList[-1].id)
 
 ##Setups with a device configuration
-client = Client("device.cfg")
+client = Client(inputConfigFile)
+
+# Process the domoticz part of the configuration
+with open(inputConfigFile, 'r') as inputConfig:
+    jsonConfig = json.load(inputConfig)
+
+domoticzAddress = jsonConfig["domoticzAddress"]
+domoticzUser = jsonConfig["domoticzUser"]
+domoticzPassword = jsonConfig["domoticzPassword"]
+
+# Create a new Domoticz instance
+domoticz = new Domoticz(domoticzAddress, domoticzUser, domoticzPassword)
 
 #Get any messages sent before the client has started
 messageList = client.getOutstandingMessages()
