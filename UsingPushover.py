@@ -6,21 +6,21 @@ inputConfigFile = "device.cfg"
 
 
 def messageCallback(messageList):
-	#Prcoess/do work with messageList!
-	if(messageList):
-		for message in messageList:
-		
-			#Do work with message here!
+    # Process/do work with messageList!
+    if(messageList):
+        for message in messageList:
+        
+            #Do work with message here!
             print("Received: " + message.message + "\n")
-			domoticz.ProcessMessage(message.message)
+            domoticz.ProcessMessage(message.message)
 
-			#Make sure to acknowledge messages with priority >= 2
-			if(message.priority >= 2):
-				if(message.acked != 1):
-					client.acknowledgeEmergency(message.receipt)			
-			
-		#Make sure you delete messages that you recieve!
-		client.deleteMessages(messageList[-1].id)
+            #Make sure to acknowledge messages with priority >= 2
+            if(message.priority >= 2):
+                if(message.acked != 1):
+                    client.acknowledgeEmergency(message.receipt)			
+            
+        #Make sure you delete messages that you recieve!
+        client.deleteMessages(messageList[-1].id)
 
 ##Setups with a device configuration
 client = Client(inputConfigFile)
@@ -43,7 +43,7 @@ messageList = client.getOutstandingMessages()
 
 #Make sure you delete messages that you recieve!
 if(messageList):
-	client.deleteMessages(messageList[-1].id)
+    client.deleteMessages(messageList[-1].id)
 
 #Pass our function as a parameter, this will run 'forever'
 client.getWebSocketMessages(messageCallback)
