@@ -34,7 +34,7 @@ domoticzUser = jsonConfig["domoticzUser"]
 domoticzPassword = jsonConfig["domoticzPassword"]
 
 # Create a new Domoticz instance
-domoticz = new Domoticz(domoticzAddress, domoticzUser, domoticzPassword)
+domoticz = Domoticz(domoticzAddress, domoticzUser, domoticzPassword)
 
 #Get any messages sent before the client has started
 messageList = client.getOutstandingMessages()
