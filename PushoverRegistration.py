@@ -1,8 +1,10 @@
 import json
-from pushover_open_client import Client
+import os
+from py_pushover_open_client.pushover_open_client import Client
 
-inputConfigFile = "base.cfg"
-outputConfigFile = "device.cfg"
+# use the file path rather than just relative, because the script can be called from a different working directory
+inputConfigFile = os.path.dirname(os.path.abspath(__file__)) + "/base.cfg"
+outputConfigFile = os.path.dirname(os.path.abspath(__file__)) + "/device.cfg"
 
 
 with open(inputConfigFile, 'r') as inputConfig:
@@ -14,7 +16,7 @@ domoticzPassword = jsonConfig["domoticzPassword"]
 
 
 #Setup with a base config containing email and password
-client = Client("base.cfg")
+client = Client(inputConfigFile)
 
 #Logs into Pushover's servers based on config
 client.login()
