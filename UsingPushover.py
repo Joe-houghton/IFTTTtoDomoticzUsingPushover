@@ -1,10 +1,11 @@
 from py_pushover_open_client.pushover_open_client import *
 from CommandToDomoticz.CommandToDomoticz import *
 import json
+import os
 
 domoticz = None
 client = None
-inputConfigFile = "device.cfg"
+inputConfigFile = os.path.dirname(os.path.abspath(__file__)) + "/device.cfg"
 
 
 def messageCallback(messageList):
