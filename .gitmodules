@@ -1,6 +1,0 @@
-[submodule "py-pushover-open-client"]
-	path = py-pushover-open-client
-	url = https://github.com/aeirsoul/py-pushover-open-client
-[submodule "CommandToDomoticz"]
-	path = CommandToDomoticz
-	url = https://github.com/Joe-houghton/CommandToDomoticz
