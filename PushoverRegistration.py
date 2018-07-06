@@ -1,6 +1,6 @@
 import json
 import os
-from py_pushover_open_client.pushover_open_client import Client
+from pushover_open_client import Client
 
 # use the file path rather than just relative, because the script can be called from a different working directory
 inputConfigFile = os.path.dirname(os.path.abspath(__file__)) + "/base.cfg"
