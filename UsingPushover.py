@@ -1,5 +1,5 @@
-from py_pushover_open_client.pushover_open_client import *
-from CommandToDomoticz.CommandToDomoticz import *
+from pushover_open_client import *
+from CommandToDomoticz import *
 import json
 import os
 
